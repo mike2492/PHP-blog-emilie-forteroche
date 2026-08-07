@@ -9,6 +9,7 @@
     private int $idUser;
     private string $title = "";
     private string $content = "";
+    private int $views = 0;
     private ?DateTime $dateCreation = null;
     private ?DateTime $dateUpdate = null;  
 
@@ -19,6 +20,10 @@
     public function setIdUser(int $idUser) : void 
     {
         $this->idUser = $idUser;
+    }
+
+    public function setViews(int $views) : void{
+        $this->views = $views;
     }
 
     /**
@@ -126,5 +131,9 @@
     public function getDateUpdate() : ?DateTime 
     {
         return $this->dateUpdate;
+    }
+
+    public function getViews() : int{
+        return $this->views;
     }
  }
