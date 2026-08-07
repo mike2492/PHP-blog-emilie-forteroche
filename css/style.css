@@ -356,7 +356,7 @@ a.info {
 
 .btn-delete{
     display: block;
-    width: 80%;
+    width: 100px;
     text-align: center;
     padding: 10px 10px;
     margin-top: 15px;
