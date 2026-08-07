@@ -18,3 +18,5 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<a class="submit" href="index.php?action=admin">Revenir à la page Admin</a>

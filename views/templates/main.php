@@ -24,8 +24,9 @@
             <a href="index.php?action=apropos">À propos</a>
             <?php if(isset($_SESSION['user'])): ?>
             <a href="index.php?action=disconnectUser">Déconnexion</a>
-            <?php else: ?>
             <a href="index.php?action=admin">Admin</a>
+            <?php else: ?>
+            <a href="index.php?action=connectionForm">Admin</a>
             <?php endif; ?>
            
             
