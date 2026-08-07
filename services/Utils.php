@@ -99,4 +99,10 @@ class Utils {
         return $defaultOrder;
     }
 
+    public static function checkIfUserIsConnected() : void{
+        if (!isset($_SESSION['user'])) {
+            Utils::redirect("connectionForm");
+        }
+    }
+
 }

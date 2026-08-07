@@ -12,7 +12,7 @@ class AdminController {
     public function showAdmin() : void
     {
         // On vérifie que l'utilisateur est connecté.
-        $this->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
 
         // On récupère les articles.
         $articleManager = new ArticleManager();
@@ -27,7 +27,7 @@ class AdminController {
 
     public function showArticlesStats() : void{
 
-        $this->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
 
         $sort = Utils::request('sort', null);
         $order = Utils::request('order', null);
@@ -50,18 +50,6 @@ class AdminController {
             'nextOrderNbComment' => $nextOrderNbComment,
             'nextOrderDateCreation' => $nextOrderDateCreation
         ]);
-    }
-
-    /**
-     * Vérifie que l'utilisateur est connecté.
-     * @return void
-     */
-    private function checkIfUserIsConnected() : void
-    {
-        // On vérifie que l'utilisateur est connecté.
-        if (!isset($_SESSION['user'])) {
-            Utils::redirect("connectionForm");
-        }
     }
 
     /**
@@ -129,7 +117,7 @@ class AdminController {
      */
     public function showUpdateArticleForm() : void 
     {
-        $this->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
 
         // On récupère l'id de l'article s'il existe.
         $id = Utils::request("id", -1);
@@ -157,7 +145,7 @@ class AdminController {
      */
     public function updateArticle() : void 
     {
-        $this->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
 
         // On récupère les données du formulaire.
         $id = Utils::request("id", -1);
@@ -192,7 +180,7 @@ class AdminController {
      */
     public function deleteArticle() : void
     {
-        $this->checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
 
         $id = Utils::request("id", -1);
 
