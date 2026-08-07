@@ -87,4 +87,16 @@ class Utils {
         return $_REQUEST[$variableName] ?? $defaultValue;
     }
 
+    public static function getNextOrder(?string $sort, ?string $order, string $columnKey, string $defaultOrder) : string{
+        if($sort === $columnKey && $order === $defaultOrder){
+            if($defaultOrder === 'DESC'){
+                $defaultOrder = 'ASC';
+            } else{
+                $defaultOrder = 'DESC';
+            }
+        }
+
+        return $defaultOrder;
+    }
+
 }

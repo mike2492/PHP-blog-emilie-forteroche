@@ -25,6 +25,33 @@ class AdminController {
         ]);
     }
 
+    public function showArticlesStats() : void{
+
+        $this->checkIfUserIsConnected();
+
+        $sort = Utils::request('sort', null);
+        $order = Utils::request('order', null);
+
+        $nextOrderTitle = Utils::getNextOrder($sort, $order, 'title', 'ASC');
+        $nextOrderViews = Utils::getNextOrder($sort, $order, 'views', 'DESC');
+        $nextOrderNbComment = Utils::getNextOrder($sort, $order, 'nbComment', 'DESC');
+        $nextOrderDateCreation = Utils::getNextOrder($sort, $order, 'date_creation', 'DESC');
+
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->getAllArticlesWithCommentCount($sort, $order);
+
+        $view = new View("Statistique des articles");
+        $view->render('articlesStats', [
+            'articles' => $articles,
+            'sort' => $sort,
+            'order' => $order,
+            'nextOrderTitle' => $nextOrderTitle,
+            'nextOrderViews' => $nextOrderViews,
+            'nextOrderNbComment' => $nextOrderNbComment,
+            'nextOrderDateCreation' => $nextOrderDateCreation
+        ]);
+    }
+
     /**
      * Vérifie que l'utilisateur est connecté.
      * @return void

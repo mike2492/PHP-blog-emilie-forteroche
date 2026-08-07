@@ -308,6 +308,8 @@ a.info {
  */ 
 
 .adminArticle {
+    width: 100%;
+    border-collapse: collapse;
     margin-bottom: 20px;
     background-color: var(--commentPaleColor);
     color: white;
@@ -335,6 +337,21 @@ a.info {
 .articleLine > div {
     padding: 20px;
     border: 1px solid var(--backgroundColor);
+}
+
+.adminArticle tbody tr:nth-child(even) {
+    background-color: var(--commentColor);
+}
+
+.adminArticle th,
+.adminArticle td {
+    padding: 20px;
+    text-align: left;
+    border: 1px solid var(--backgroundColor);
+}
+
+.statsLink {
+    margin-top: 15px;
 }
 
 /** 

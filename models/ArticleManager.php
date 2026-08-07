@@ -97,4 +97,40 @@ class ArticleManager extends AbstractEntityManager
         $sql = "UPDATE article SET views = views + 1 WHERE id = :id";
         $this->db->query($sql, ['id' => $id]);
     }
+
+    public function getAllArticlesWithCommentCount(?string $sort = null, ?string $order = null) : array{
+
+        $columnsSortable = [
+            'title' => 'article.title',
+            'views' => 'article.views',
+            'nbComment' => 'nbComment',
+            'date_creation' => 'article.date_creation'
+        ];
+
+        $sortColumn = null;
+        $sortOrder = null;
+
+        $sql = "SELECT article.id, article.title, article.views, article.date_creation, COUNT(comment.id) AS nbComment  FROM article LEFT JOIN comment ON article.id = comment.id_article GROUP BY article.id";
+
+        if($sort !== null && array_key_exists($sort, $columnsSortable)){
+            $sortColumn = $columnsSortable[$sort];
+        }
+
+        if($order === 'DESC' || $order === 'ASC'){
+            $sortOrder = $order;
+        }
+
+        if($sortColumn !== null && $sortOrder !== null){
+            $sql.= " ORDER BY $sortColumn $sortOrder";
+        }
+
+        $articles = [];
+
+        $result = $this->db->query($sql);
+        while($article = $result->fetch()){
+            $articles[] = new Article($article);
+        }
+
+        return $articles;
+    }
 }

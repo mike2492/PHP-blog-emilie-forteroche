@@ -10,6 +10,7 @@
     private string $title = "";
     private string $content = "";
     private int $views = 0;
+    private int $nbComment = 0;
     private ?DateTime $dateCreation = null;
     private ?DateTime $dateUpdate = null;  
 
@@ -24,6 +25,10 @@
 
     public function setViews(int $views) : void{
         $this->views = $views;
+    }
+
+    public function setNbComment(int $nbComment) : void{
+        $this->nbComment = $nbComment;
     }
 
     /**
@@ -135,5 +140,9 @@
 
     public function getViews() : int{
         return $this->views;
+    }
+
+    public function getNbComment() : int{
+        return $this->nbComment;
     }
  }
