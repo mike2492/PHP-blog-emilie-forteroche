@@ -44,4 +44,22 @@ class CommentController
         // On redirige vers la page de l'article.
         Utils::redirect("showArticle", ['id' => $idArticle]);
     }
+
+    public function deleteComment() : void{
+
+        Utils::checkIfUserIsConnected();
+
+        $id = Utils::request("id", -1);
+
+        $commentManager = new CommentManager();
+        $comment = $commentManager->getCommentById($id);
+
+        if(!$comment){
+            throw new Exception("Ce commentaire n'existe pas");
+        }
+
+        $commentManager->deleteComment($comment);
+
+        Utils::redirect("showArticle", ['id' => $comment->getIdArticle()]);
+    }
 }

@@ -354,6 +354,14 @@ a.info {
     margin-top: 15px;
 }
 
+.btn-delete{
+    display: block;
+    width: 80%;
+    text-align: center;
+    padding: 10px 10px;
+    margin-top: 15px;
+}
+
 /** 
  * Footer global de la page.
  */

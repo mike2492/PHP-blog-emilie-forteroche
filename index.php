@@ -79,6 +79,11 @@ try {
             $adminController->showArticlesStats();
             break;
 
+        case 'deleteComment':
+            $commentController = new CommentController();
+            $commentController->deleteComment();
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
