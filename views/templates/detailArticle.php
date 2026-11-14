@@ -1,8 +1,8 @@
 <?php
-    /**
-     * Ce template affiche un article et ses commentaires.
-     * Il affiche également un formulaire pour ajouter un commentaire.
-     */
+/**
+ * Ce template affiche un article et ses commentaires.
+ * Il affiche également un formulaire pour ajouter un commentaire.
+ */
 ?>
 
 <article class="mainArticle">
@@ -20,17 +20,17 @@
 
 <div class="comments">
     <h2 class="commentsTitle">Vos Commentaires</h2>
-    <?php if(empty($comments)): ?>
+    <?php if (empty($comments)): ?>
         <p class="info">Aucun commentaire pour cet article</p>
     <?php else: ?>
         <ul>
-            <?php foreach($comments as $comment): ?>
+            <?php foreach ($comments as $comment): ?>
                 <li>
                     <div class="smiley">☻</div>
                     <div class="detailComment">
                         <h3 class="info">Le <?= Utils::convertDateToFrenchFormat($comment->getDateCreation()); ?>, <?= Utils::format($comment->getPseudo()); ?> a écrit :</h3>
                         <p class="content"><?= Utils::format($comment->getContent()); ?></p>
-                        <?php if(isset($_SESSION['user'])): ?>
+                        <?php if (isset($_SESSION['user'])): ?>
                                 <a class="submit btn-delete" href="index.php?action=deleteComment&id=<?= $comment->getId(); ?>" <?= Utils::askConfirmation("Êtes-vous sûr de vouloir supprimer ce commentaire ?") ?>>Supprimer</a>
                         <?php endif; ?>
                     </div>

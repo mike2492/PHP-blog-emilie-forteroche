@@ -8,7 +8,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach($articles as $article): ?>
+        <?php foreach ($articles as $article): ?>
             <tr>
                 <td><?= $article->getTitle(); ?></td>
                 <td><?= $article->getViews(); ?></td>

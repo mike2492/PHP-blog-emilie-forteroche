@@ -1,12 +1,12 @@
 <?php
 
-class CommentController 
+class CommentController
 {
     /**
      * Ajoute un commentaire.
      * @return void
      */
-    public function addComment() : void
+    public function addComment(): void
     {
         // Récupération des données du formulaire.
         $pseudo = Utils::request("pseudo");
@@ -45,7 +45,8 @@ class CommentController
         Utils::redirect("showArticle", ['id' => $idArticle]);
     }
 
-    public function deleteComment() : void{
+    public function deleteComment(): void
+    {
 
         Utils::checkIfUserIsConnected();
 
@@ -54,7 +55,7 @@ class CommentController
         $commentManager = new CommentManager();
         $comment = $commentManager->getCommentById($id);
 
-        if(!$comment){
+        if (!$comment) {
             throw new Exception("Ce commentaire n'existe pas");
         }
 
